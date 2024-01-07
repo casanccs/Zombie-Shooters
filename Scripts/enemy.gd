@@ -18,8 +18,8 @@ func _physics_process(delta):
 	direction = nav.get_next_path_position() - global_position
 	direction = direction.normalized()
 	velocity = velocity.lerp(direction * speed, accel * delta)
-	
-	move_and_slide()
+	if !nphit:
+		move_and_slide()
 	
 	for index in range(get_slide_collision_count()):
 		# We get one of the collisions with the player

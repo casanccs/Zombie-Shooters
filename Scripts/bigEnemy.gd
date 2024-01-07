@@ -3,6 +3,7 @@ extends CharacterBody3D
 var speed = 2
 var accel = 10
 var hp = 25
+var nphit = false
 
 @onready var nav = $NavigationAgent3D
 @onready var player = $"/root/main/Player"
@@ -18,7 +19,8 @@ func _physics_process(delta):
 	direction = direction.normalized()
 	velocity = velocity.lerp(direction * speed, accel * delta)
 	
-	move_and_slide()
+	if !nphit:
+		move_and_slide()
 	
 	for index in range(get_slide_collision_count()):
 		# We get one of the collisions with the player
@@ -27,8 +29,10 @@ func _physics_process(delta):
 		if collision.get_collider() == null:
 			continue
 		# If the collider is with a mob
-		if collision.get_collider().is_in_group("Player"):
+		if collision.get_collider().is_in_group("Player") and !nphit:
 			collision.get_collider().getHit(4)
+			nphit = true
+			$Timer.start()
 
 func hit(damage):
 	hp -= damage
@@ -36,3 +40,7 @@ func hit(damage):
 		queue_free()
 		return 'big'
 	return 'none'
+
+
+func _on_timer_timeout():
+	nphit = false # Replace with function body.

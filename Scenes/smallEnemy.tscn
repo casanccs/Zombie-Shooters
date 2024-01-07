@@ -26,3 +26,9 @@ shape = SubResource("CapsuleShape3D_s5dx3")
 mesh = SubResource("CapsuleMesh_p3xbn")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.76
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

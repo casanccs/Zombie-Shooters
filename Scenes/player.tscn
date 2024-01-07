@@ -26,6 +26,54 @@ mesh = SubResource("CapsuleMesh_poi7e")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484262, -0.498475)
 
+[node name="Control" type="Control" parent="Camera3D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 90.0
+offset_right = 113.0
+offset_bottom = 214.0
+
+[node name="Pistol" type="Button" parent="Camera3D/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Pistol Ammo: $300 (1)"
+
+[node name="SMG" type="Button" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 34.0
+offset_right = 45.0
+offset_bottom = 65.0
+text = "SMG: $1500(2)"
+
+[node name="AR" type="Button" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 68.0
+offset_right = 31.0
+offset_bottom = 99.0
+text = "AR: $2500 (3)"
+
+[node name="Sniper" type="Button" parent="Camera3D/Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 103.0
+offset_right = 61.0
+offset_bottom = 134.0
+text = "Sniper: $3000 (4)"
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.592157, 0, 0, 0.407843)
+
 [node name="Crosshair" type="TextureRect" parent="Camera3D"]
 texture_filter = 1
 anchors_preset = 8
@@ -110,4 +158,9 @@ text = "$"
 [node name="ShootCoolDown" type="Timer" parent="."]
 one_shot = true
 
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="ShootCoolDown" to="." method="_on_shoot_cool_down_timeout"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
