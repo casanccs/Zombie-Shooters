@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0op1noveos7x"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ap86d"]
+[ext_resource type="Texture2D" uid="uid://q1kovnhgpl51" path="res://Assets/crosshair.png" id="1_ydt62"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_absif"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nggix"]
+albedo_color = Color(0.25098, 0.027451, 0.823529, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_poi7e"]
+material = SubResource("StandardMaterial3D_nggix")
+
+[sub_resource type="Theme" id="Theme_q1x2n"]
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_mask = 6
+script = ExtResource("1_ap86d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_absif")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_poi7e")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484262, -0.498475)
+
+[node name="Crosshair" type="TextureRect" parent="Camera3D"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ydt62")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 1, -100)
+collision_mask = 7
+collide_with_areas = true
+
+[node name="HP" type="ProgressBar" parent="Camera3D"]
+modulate = Color(0.976471, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 259.0
+offset_bottom = 30.0
+theme = SubResource("Theme_q1x2n")
+max_value = 5.0
+step = 1.0
+show_percentage = false
+
+[node name="STAMINA" type="ProgressBar" parent="Camera3D"]
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 255.0
+offset_bottom = 50.0
+step = 1.0
+show_percentage = false
+
+[node name="CurrentWeapon" type="Label" parent="Camera3D"]
+offset_left = 8.0
+offset_top = 595.0
+offset_right = 48.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 30
+text = "Testing"
+metadata/_edit_use_anchors_ = true
+
+[node name="GunAmmo" type="Label" parent="Camera3D"]
+offset_left = 125.0
+offset_top = 597.0
+offset_right = 186.0
+offset_bottom = 642.0
+theme_override_font_sizes/font_size = 30
+text = "Test"
+
+[node name="Ammo" type="Label" parent="Camera3D"]
+offset_left = 213.0
+offset_top = 596.0
+offset_right = 274.0
+offset_bottom = 641.0
+theme_override_font_sizes/font_size = 30
+text = "Test"
+
+[node name="Space" type="Label" parent="Camera3D"]
+offset_left = 180.0
+offset_top = 594.0
+offset_right = 241.0
+offset_bottom = 639.0
+theme_override_font_sizes/font_size = 30
+text = "|"
+
+[node name="Money" type="Label" parent="Camera3D"]
+offset_left = 10.0
+offset_top = 52.0
+offset_right = 50.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 30
+text = "$"
+
+[node name="ShootCoolDown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ShootCoolDown" to="." method="_on_shoot_cool_down_timeout"]

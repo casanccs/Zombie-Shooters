@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://kk1wi8sus01a"]
+
+[ext_resource type="PackedScene" uid="uid://b0op1noveos7x" path="res://Scenes/player.tscn" id="1_0012v"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_r3inp"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_hdnd3"]
+vertices = PackedVector3Array(-12.75, 0.75, -15, -10.75, 0.75, -15, -10.75, 0.75, -24.5, -17.75, 0.75, -24.5, -13, 0.75, -14, -12.75, 0.75, -15, -17.75, 0.75, -24.5, -24.5, 0.75, -24.5, -24.5, 0.75, -14, 0, 0.75, -24.5, -10.75, 0.75, -24.5, -10.75, 0.75, -15, 0, 0.75, -15, 0, 0.75, -15, 11, 0.75, -15, 11, 0.75, -24.5, 0, 0.75, -24.5, 11, 0.75, -24.5, 11, 0.75, -15, 13, 0.75, -15, 17.75, 0.75, -24.5, 17.75, 0.75, -24.5, 13, 0.75, -15, 13.25, 0.75, -14, 24.5, 0.75, -14, 24.5, 0.75, -24.5, -24.5, 0.75, 14.75, -24.5, 0.75, 24.5, -18.5, 0.75, 24.5, 24.5, 0.75, -14, 13.25, 0.75, -14, 13, 0.75, -13.25, 24.5, 0.75, -4.5, 18.25, 0.75, 24.5, 24.5, 0.75, 24.5, 24.5, 0.75, 14.75, -12.75, 0.75, -13.25, -13, 0.75, -14, -24.5, 0.75, -14, -24.5, 0.75, -4.5, 0, 0.75, 24.5, 6, 0.75, 24.5, 24.5, 0.75, 14.75, 24.5, 0.75, 5.25, 0, 0.75, -13.25, -24.5, 0.75, 5.25, -24.5, 0.75, 14.75, 0, 0.75, 24.5, 24.5, 0.75, 14.75, -24.5, 0.75, 14.75, -18.5, 0.75, 24.5, -12.25, 0.75, 24.5, 12.25, 0.75, 24.5, 18.25, 0.75, 24.5, 24.5, 0.75, 14.75, -6.5, 0.75, -13.25, -12.75, 0.75, -13.25, -24.5, 0.75, -4.5, 24.5, 0.75, -4.5, 13, 0.75, -13.25, 6.5, 0.75, -13.25, -24.5, 0.75, 14.75, -12.25, 0.75, 24.5, -6.25, 0.75, 24.5, 6, 0.75, 24.5, 12.25, 0.75, 24.5, 24.5, 0.75, 14.75, -6.5, 0.75, -13.25, -24.5, 0.75, -4.5, -24.5, 0.75, 5.25, 0, 0.75, -13.25, 24.5, 0.75, 5.25, 24.5, 0.75, -4.5, 6.5, 0.75, -13.25, 0, 0.75, -13.25, -24.5, 0.75, 14.75, -6.25, 0.75, 24.5, 0, 0.75, 24.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 8), PackedInt32Array(12, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(16, 15, 13), PackedInt32Array(13, 15, 14), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 25), PackedInt32Array(23, 25, 24), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(35, 34, 33), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(42, 41, 40), PackedInt32Array(48, 47, 43), PackedInt32Array(43, 47, 44), PackedInt32Array(44, 47, 45), PackedInt32Array(45, 47, 46), PackedInt32Array(51, 50, 49), PackedInt32Array(54, 53, 52), PackedInt32Array(57, 56, 55), PackedInt32Array(60, 59, 58), PackedInt32Array(63, 62, 61), PackedInt32Array(66, 65, 64), PackedInt32Array(67, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 71), PackedInt32Array(77, 76, 75)]
+agent_height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyqlv"]
+albedo_color = Color(0.556863, 0.286275, 0.211765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bw6ru"]
+material = SubResource("StandardMaterial3D_dyqlv")
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ql68l"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p710w"]
+size = Vector3(25, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6f1fx"]
+size = Vector3(25, 1, 0.5)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_r3inp")
+
+[node name="Player" parent="." instance=ExtResource("1_0012v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+navigation_mesh = SubResource("NavigationMesh_hdnd3")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
+mesh = SubResource("BoxMesh_bw6ru")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
+shape = SubResource("BoxShape3D_ql68l")
+
+[node name="Wall" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.603304, -14.2238)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall"]
+mesh = SubResource("BoxMesh_p710w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Wall"]
+shape = SubResource("BoxShape3D_6f1fx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.00783, 0)
+light_energy = 5.0
+light_indirect_energy = 10.0
+light_size = 100.0
+omni_range = 100.0
+
+[node name="ZombieSpawner" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="Spawn1" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
+
+[node name="Spawn2" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="Spawn3" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
+
+[node name="Spawn4" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
+
+[node name="Spawn5" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+
+[connection signal="timeout" from="ZombieSpawner" to="." method="_on_zombie_spawner_timeout"]
