@@ -1,0 +1,14 @@
+
+2. Vending machines, when you are close enough and aiming towards vending machine:
+	- HP upgrade (Max HP, regen)
+	- Stamina upgrade (Max Stamina, regen)
+	- Speed upgrade
+	- Ammo purchase upgrade
+	- Damage upgrade
+	- Reload Speed upgrade
+
+
+
+
+
+Last is waves

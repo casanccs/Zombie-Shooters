@@ -9,10 +9,47 @@ extends Node3D
 @onready var spawn3 = $SpawnPoints/Spawn3
 @onready var spawn4 = $SpawnPoints/Spawn4
 @onready var spawn5 = $SpawnPoints/Spawn5
+@onready var zspawner = $"ZombieSpawner"
+
+var waves = [
+	5,
+	7,
+	10,
+]
+var curWave = 0
+var wavePoints = waves[curWave]
+var finish = false
+var toSpawn = true
+var zrand = 1
+
+func _process(delta):
+	if toSpawn:
+		zrand = randi_range(1,3)
+		
+		if zrand == 1:
+			if wavePoints >= 1:
+				wavePoints -= 1
+				zspawner.start()
+				toSpawn = false
+
+			else:
+				finish = true
+				toSpawn = false
+				$"RestTimer".start()
+		if zrand == 2:
+			if wavePoints >= 4:
+				wavePoints -= 4
+				zspawner.start()
+				toSpawn = false
+
+		if zrand == 3:
+			if wavePoints >= 2:
+				wavePoints -= 2
+				zspawner.start()
+				toSpawn = false
 
 
 func _on_zombie_spawner_timeout():
-	var zrand = randi_range(1,3)
 	var enemy
 	if zrand == 1:
 		enemy = enemy_scene.instantiate()
@@ -33,3 +70,10 @@ func _on_zombie_spawner_timeout():
 	if rand == 5:
 		enemy.position = spawn5.position
 	add_child(enemy)
+	toSpawn = true
+
+
+func _on_rest_timer_timeout():
+	curWave += 1
+	wavePoints = waves[curWave]
+	toSpawn = true
