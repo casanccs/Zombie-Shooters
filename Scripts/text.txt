@@ -1,14 +1,5 @@
-
-2. Vending machines, when you are close enough and aiming towards vending machine:
-	- HP upgrade (Max HP, regen)
-	- Stamina upgrade (Max Stamina, regen)
-	- Speed upgrade
-	- Ammo purchase upgrade
-	- Damage upgrade
-	- Reload Speed upgrade
+1. onready "vendymachine"
+2. "showvendy" function
+3. In vending machine.gd, check out last line
 
 
-
-
-
-Last is waves

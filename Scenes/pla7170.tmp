@@ -17,6 +17,17 @@ material = SubResource("StandardMaterial3D_nggix")
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_ap86d")
+SPEED = null
+INITSPEED = null
+MOUSE_SENS = null
+GRAVITY = null
+STAMINA = null
+maxSTAMINA = null
+toSPRINT = null
+reloadMulti = null
+damageMulti = null
+ammoMulti = null
+fireRateMulti = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_absif")

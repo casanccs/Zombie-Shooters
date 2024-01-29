@@ -11,18 +11,20 @@ extends Node3D
 @onready var spawn5 = $SpawnPoints/Spawn5
 @onready var zspawner = $"ZombieSpawner"
 
-var waves = [
-	5,
-	7,
-	10,
-]
 var curWave = 0
-var wavePoints = waves[curWave]
+var prevWave = 3
+var wavePoints = 3
 var finish = false
+
 var toSpawn = true
 var zrand = 1
 
 func _process(delta):
+	if get_tree().get_nodes_in_group("Enemies").is_empty() and wavePoints <= 0 and not finish:
+		$"RestTimer".start()
+		print("roundFinish")
+		finish = true
+		curWave += 1
 	if toSpawn:
 		zrand = randi_range(1,3)
 		
@@ -32,10 +34,7 @@ func _process(delta):
 				zspawner.start()
 				toSpawn = false
 
-			else:
-				finish = true
-				toSpawn = false
-				$"RestTimer".start()
+
 		if zrand == 2:
 			if wavePoints >= 4:
 				wavePoints -= 4
@@ -74,6 +73,10 @@ func _on_zombie_spawner_timeout():
 
 
 func _on_rest_timer_timeout():
-	curWave += 1
-	wavePoints = waves[curWave]
+	
+	wavePoints = prevWave +  randi_range(1,5)
+	prevWave = wavePoints
+	
 	toSpawn = true
+	finish = false
+	print(wavePoints)          

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://kk1wi8sus01a"]
+[gd_scene load_steps=10 format=3 uid="uid://kk1wi8sus01a"]
 
 [ext_resource type="PackedScene" uid="uid://b0op1noveos7x" path="res://Scenes/player.tscn" id="1_0012v"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_r3inp"]
+[ext_resource type="PackedScene" uid="uid://c5m2tsbrs6b4i" path="res://Scenes/vending_machine.tscn" id="3_fmjd0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hdnd3"]
 vertices = PackedVector3Array(-12.75, 0.75, -15, -10.75, 0.75, -15, -10.75, 0.75, -24.5, -17.75, 0.75, -24.5, -13, 0.75, -14, -12.75, 0.75, -15, -17.75, 0.75, -24.5, -24.5, 0.75, -24.5, -24.5, 0.75, -14, 0, 0.75, -24.5, -10.75, 0.75, -24.5, -10.75, 0.75, -15, 0, 0.75, -15, 0, 0.75, -15, 11, 0.75, -15, 11, 0.75, -24.5, 0, 0.75, -24.5, 11, 0.75, -24.5, 11, 0.75, -15, 13, 0.75, -15, 17.75, 0.75, -24.5, 17.75, 0.75, -24.5, 13, 0.75, -15, 13.25, 0.75, -14, 24.5, 0.75, -14, 24.5, 0.75, -24.5, -24.5, 0.75, 14.75, -24.5, 0.75, 24.5, -18.5, 0.75, 24.5, 24.5, 0.75, -14, 13.25, 0.75, -14, 13, 0.75, -13.25, 24.5, 0.75, -4.5, 18.25, 0.75, 24.5, 24.5, 0.75, 24.5, 24.5, 0.75, 14.75, -12.75, 0.75, -13.25, -13, 0.75, -14, -24.5, 0.75, -14, -24.5, 0.75, -4.5, 0, 0.75, 24.5, 6, 0.75, 24.5, 24.5, 0.75, 14.75, 24.5, 0.75, 5.25, 0, 0.75, -13.25, -24.5, 0.75, 5.25, -24.5, 0.75, 14.75, 0, 0.75, 24.5, 24.5, 0.75, 14.75, -24.5, 0.75, 14.75, -18.5, 0.75, 24.5, -12.25, 0.75, 24.5, 12.25, 0.75, 24.5, 18.25, 0.75, 24.5, 24.5, 0.75, 14.75, -6.5, 0.75, -13.25, -12.75, 0.75, -13.25, -24.5, 0.75, -4.5, 24.5, 0.75, -4.5, 13, 0.75, -13.25, 6.5, 0.75, -13.25, -24.5, 0.75, 14.75, -12.25, 0.75, 24.5, -6.25, 0.75, 24.5, 6, 0.75, 24.5, 12.25, 0.75, 24.5, 24.5, 0.75, 14.75, -6.5, 0.75, -13.25, -24.5, 0.75, -4.5, -24.5, 0.75, 5.25, 0, 0.75, -13.25, 24.5, 0.75, 5.25, 24.5, 0.75, -4.5, 6.5, 0.75, -13.25, 0, 0.75, -13.25, -24.5, 0.75, 14.75, -6.25, 0.75, 24.5, 0, 0.75, 24.5)
@@ -88,6 +89,14 @@ one_shot = true
 [node name="RestTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="Juggernog" parent="." instance=ExtResource("3_fmjd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4626, 1.04495, 0)
+Juggernog = true
+
+[node name="Packapunch" parent="." instance=ExtResource("3_fmjd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7563, 0.882056, 10.2638)
+packapunch = true
 
 [connection signal="timeout" from="ZombieSpawner" to="." method="_on_zombie_spawner_timeout"]
 [connection signal="timeout" from="RestTimer" to="." method="_on_rest_timer_timeout"]

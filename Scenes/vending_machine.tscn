@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5m2tsbrs6b4i"]
+
+[ext_resource type="Script" path="res://Scripts/vending_machine.gd" id="1_wtihm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnn7q"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljkwb"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b3ed1"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ljkwb")
+size = Vector3(1, 2, 1)
+
+[node name="VendingMachine" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.882056, 0)
+script = ExtResource("1_wtihm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jnn7q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_b3ed1")
